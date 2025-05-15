@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: vocalink:latest
+    ports:
+      - "8000:8000"
+    environment:
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - AAI_API_KEY=${AAI_API_KEY}
+    privileged: true
+    
+  frontend:
+    build:
+      context: ./vocalink-frontend
+      dockerfile: Dockerfile
+      args:
+        - AAI_API_KEY=${AAI_API_KEY}
+    image: vocalink-frontend:latest
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
