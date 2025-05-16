@@ -29,16 +29,16 @@ def on_close():
   print("Closing Session")
 
 transcriber = aai.RealtimeTranscriber(
-  on_data = on_data,
-  on_error = on_error,
-  sample_rate = 16_000,
-  on_open = on_open,
-  on_close = on_close,
+  on_data=on_data,
+  on_error=on_error,
+  sample_rate=16_000,
+  on_open=on_open,
+  on_close=on_close,
 )
 transcriber.connect()
 try:
-    microphone_stream = aai.extras.MicrophoneStream(sample_rate = 16_000)
-    transcriber.stream(data = microphone_stream)
+    microphone_stream = aai.extras.MicrophoneStream(sample_rate=16_000)
+    transcriber.stream(data=microphone_stream)
 except Exception as e:
     print(e)
     transcriber.close()
