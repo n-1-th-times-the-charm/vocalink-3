@@ -5,7 +5,7 @@ from agent.graph import vocalink_graph
 
 aai.settings.api_key = os.getenv("AAI_API_KEY")
 global file
-file = open(FILE_PATH, 'a+')
+file = open(FILE_PATH, "a+")
 file.seek(0)
 
 def on_open(session_opened: aai.RealtimeSessionOpened):
